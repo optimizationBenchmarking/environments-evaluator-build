@@ -16,18 +16,97 @@ RUN export LANG=C.UTF-8 &&\
     cd /tmp/ &&\
     wget "http://raw.githubusercontent.com/optimizationBenchmarking/utils-build/master/antWebInstallerLinux.sh" &&\
     chmod 755 antWebInstallerLinux.sh &&\
-    ./antWebInstallerLinux.sh &&\
+    ./antWebInstallerLinux.sh &&\    
+    rm -f /tmp/antWebInstallerLinux.sh &&\  
+    wget http://github.com/optimizationBenchmarking/utils-base/archive/master.zip &&\
+    unzip master.zip &&\
+    rm -f master.zip &&\
+    cd utils-base-master &&\
+    mvn -Dmaven.javadoc.skip=true -Dmaven.test.skip.exec=true -B clean compile package install &&\
+    cd /tmp/ &&\
+    rm -rf /tmp/utils-math-master &&\  
+    wget http://github.com/optimizationBenchmarking/utils-math/archive/master.zip &&\
+    unzip master.zip &&\
+    rm -f master.zip &&\
+    cd utils-math-master &&\
+    mvn -Dmaven.javadoc.skip=true -Dmaven.test.skip.exec=true -B clean compile package install &&\
+    cd /tmp/ &&\
+    rm -rf /tmp/utils-math-master &&\  
+    wget http://github.com/optimizationBenchmarking/utils-graphics/archive/master.zip &&\
+    unzip master.zip &&\
+    rm -f master.zip &&\
+    cd utils-graphics-master &&\
+    mvn -Dmaven.javadoc.skip=true -Dmaven.test.skip.exec=true -B clean compile package install &&\
+    cd /tmp/ &&\
+    rm -rf /tmp/utils-graphics-master &&\  
+    wget http://github.com/optimizationBenchmarking/utils-charts/archive/master.zip &&\
+    unzip master.zip &&\
+    rm -f master.zip &&\
+    cd utils-charts-master &&\
+    mvn -Dmaven.javadoc.skip=true -Dmaven.test.skip.exec=true -B clean compile package install &&\
+    cd /tmp/ &&\
+    rm -rf /tmp/utils-charts-master &&\  
+    wget http://github.com/optimizationBenchmarking/utils-documents/archive/master.zip &&\
+    unzip master.zip &&\
+    rm -f master.zip &&\
+    cd utils-documents-master &&\
+    mvn -Dmaven.javadoc.skip=true -Dmaven.test.skip.exec=true -B clean compile package install &&\
+    cd /tmp/ &&\
+    rm -rf /tmp/utils-documents-master &&\  
+    wget http://github.com/optimizationBenchmarking/utils-ml/archive/master.zip &&\
+    unzip master.zip &&\
+    rm -f master.zip &&\
+    cd utils-ml-master &&\
+    mvn -Dmaven.javadoc.skip=true -Dmaven.test.skip.exec=true -B clean compile package install &&\
+    cd /tmp/ &&\
+    rm -rf /tmp/utils-ml-master &&\  
+    wget http://github.com/optimizationBenchmarking/evaluator-base/archive/master.zip &&\
+    unzip master.zip &&\
+    rm -f master.zip &&\
+    cd evaluator-base-master &&\
+    mvn -Dmaven.javadoc.skip=true -Dmaven.test.skip.exec=true -B clean compile package install &&\
+    cd /tmp/ &&\
+    rm -rf /tmp/evaluator-base-master &&\  
+    wget http://github.com/optimizationBenchmarking/evaluator-attributes/archive/master.zip &&\
+    unzip master.zip &&\
+    rm -f master.zip &&\
+    cd evaluator-attributes-master &&\
+    mvn -Dmaven.javadoc.skip=true -Dmaven.test.skip.exec=true -B clean compile package install &&\
+    cd /tmp/ &&\
+    rm -rf /tmp/evaluator-attributes-master &&\  
+    wget http://github.com/optimizationBenchmarking/evaluator-modules/archive/master.zip &&\
+    unzip master.zip &&\
+    rm -f master.zip &&\
+    cd evaluator-modules-master &&\
+    mvn -Dmaven.javadoc.skip=true -Dmaven.test.skip.exec=true -B clean compile package install &&\
+    cd /tmp/ &&\
+    rm -rf /tmp/evaluator-modules-master &&\  
+    wget http://github.com/optimizationBenchmarking/evaluator-evaluator/archive/master.zip &&\
+    unzip master.zip &&\
+    rm -f master.zip &&\
+    cd evaluator-evaluator-master &&\
+    mvn -Dmaven.javadoc.skip=true -Dmaven.test.skip.exec=true -B clean compile package install &&\
+    cd /tmp/ &&\
+    rm -rf /tmp/evaluator-evaluator-master &&\  
+    wget http://github.com/optimizationBenchmarking/documentation-examples-loader/archive/master.zip &&\
+    unzip master.zip &&\
+    rm -f master.zip &&\
+    cd documentation-examples-loader-master &&\
+    mvn -Dmaven.javadoc.skip=true -Dmaven.test.skip.exec=true -B clean compile package install &&\
+    cd /tmp/ &&\
+    rm -rf /tmp/documentation-examples-loader-master &&\  
     wget http://github.com/optimizationBenchmarking/evaluator-gui/archive/master.zip &&\
     unzip master.zip &&\
     rm -f master.zip &&\
     cd evaluator-gui-master &&\
-    ant -DskipTests=true &&\
+    mvn -Dmaven.javadoc.skip=true -Dmaven.test.skip.exec=true -B clean compile package install &&\
+    cd /tmp/ &&\
+    rm -rf /tmp/evaluator-gui-master &&\
     apt-get purge -f -y wget &&\
     apt-get clean &&\
     apt-get autoclean -y &&\
     apt-get autoremove -y &&\
-    apt-get clean &&\
-    rm -rf /tmp/evaluator-gui-master /tmp/antWebInstallerLinux.sh &&\    
+    apt-get clean &&\    
     rm -rf /tmp/* /var/tmp/* &&\
     rm -rf /var/lib/apt/lists/* &&\
     rm -f /etc/ssh/ssh_host_*
