@@ -11,7 +11,6 @@ FROM optimizationbenchmarking/evaluator-runtime
 MAINTAINER Thomas Weise <tweise@ustc.edu.cn>
 
 RUN export LANG=C.UTF-8 &&\
-    /var/lib/dpkg/info/ca-certificates-java.postinst configure &&\
     apt-get update &&\
     apt-get install -f -y maven=3.0.* wget &&\
     cd /tmp/ &&\
