@@ -14,10 +14,10 @@ RUN export LANG=C.UTF-8 &&\
     apt-get update &&\
     apt-get install -f -y maven=3.0.* wget &&\
     cd /tmp/ &&\
-    wget "https://raw.githubusercontent.com/optimizationBenchmarking/utils-build/master/antWebInstallerLinux.sh" &&\
+    wget "http://raw.githubusercontent.com/optimizationBenchmarking/utils-build/master/antWebInstallerLinux.sh" &&\
     chmod 755 antWebInstallerLinux.sh &&\
     ./antWebInstallerLinux.sh &&\
-    wget https://github.com/optimizationBenchmarking/evaluator-gui/archive/master.zip &&\
+    wget http://github.com/optimizationBenchmarking/evaluator-gui/archive/master.zip &&\
     unzip master.zip &&\
     rm -f master.zip &&\
     cd evaluator-gui-master &&\
