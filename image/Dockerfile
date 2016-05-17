@@ -7,22 +7,28 @@
 # maven plugins in order to reduce the build time.
 # 
 # 
-FROM optimizationbenchmarking/evaluator-runtime
+FROM optimizationbenchmarking/evaluator-runtime:0.8.5
 MAINTAINER Thomas Weise <tweise@ustc.edu.cn>
 
 RUN export LANG=C.UTF-8 &&\
     apt-get update &&\
-    apt-get install -f -y maven=3.0.* wget &&\
+    apt-get install -f -y sudo wget &&\
     cd /tmp/ &&\
     wget "http://raw.githubusercontent.com/optimizationBenchmarking/utils-build/master/antWebInstallerLinux.sh" &&\
     chmod 755 antWebInstallerLinux.sh &&\
     ./antWebInstallerLinux.sh &&\    
     rm -f /tmp/antWebInstallerLinux.sh &&\  
+    apt-get install -f -y maven=3.0.* &&\
     wget http://github.com/optimizationBenchmarking/utils-base/archive/master.zip &&\
     unzip master.zip &&\
     rm -f master.zip &&\
     cd utils-base-master &&\
     mvn -Dmaven.javadoc.skip=true -Dmaven.test.skip.exec=true -B clean compile package install &&\
+    rm -rf ./src/test/java/examples &&\
+    rm -rf ./src/test/java/test &&\
+    rm -rf ./src/test/java/shared/junit/org &&\
+    echo 'public class Tester { public Tester() { super(); } @org.junit.Test public void doTest() { } }' > ./src/test/java/Tester.java &&\
+    mvn -B clean compile test &&\
     cd /tmp/ &&\
     rm -rf /tmp/utils-math-master &&\  
     wget http://github.com/optimizationBenchmarking/utils-math/archive/master.zip &&\
@@ -102,7 +108,8 @@ RUN export LANG=C.UTF-8 &&\
     mvn -Dmaven.javadoc.skip=true -Dmaven.test.skip.exec=true -B clean compile package install &&\
     cd /tmp/ &&\
     rm -rf /tmp/evaluator-gui-master &&\
-    apt-get purge -f -y wget &&\
+    export SUDO_FORCE_REMOVE=yes &&\
+    apt-get purge -f -y sudo wget &&\
     apt-get clean &&\
     apt-get autoclean -y &&\
     apt-get autoremove -y &&\
