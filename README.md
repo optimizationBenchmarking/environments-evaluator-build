@@ -4,7 +4,7 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/optimizationbenchmarking/evaluator-build.svg)](https://hub.docker.com/r/optimizationbenchmarking/evaluator-build/)
 [![Docker Stars](https://img.shields.io/docker/stars/optimizationbenchmarking/evaluator-build.svg)](https://hub.docker.com/r/optimizationbenchmarking/evaluator-build/)
 
-The current version of this image is 0.8.5.
+The current version of this image is 0.8.6.
 
 ## Components
 

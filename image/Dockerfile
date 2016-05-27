@@ -7,7 +7,7 @@
 # maven plugins in order to reduce the build time.
 # 
 # 
-FROM optimizationbenchmarking/evaluator-runtime:0.8.5
+FROM optimizationbenchmarking/evaluator-runtime:0.8.6
 MAINTAINER Thomas Weise <tweise@ustc.edu.cn>
 
 RUN export LANG=C.UTF-8 &&\
